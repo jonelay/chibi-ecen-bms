@@ -15,7 +15,7 @@ A 7-cell lithium-ion battery management system designed as a student project for
 
 This BMS was designed for an electric-assist recumbent tricycle with a focus on battery monitoring, safety, and data logging. The design used the ChibiOS operating system, and includes CAN bus communication, microSD data logging, and comprehensive fault detection.
 
-⚠️ **Educational Prototype** - This was a student learning project from 2014 focused on PCB layout techniques for power electronics. While the design is complete and boards were fabricated, this should be considered a learning exercise rather than a production-ready design. Firmware development was not released as part of the project.
+⚠️ **Educational Prototype** - This was a graduate student learning project from 2015 focused on PCB layout techniques for power electronics. While the design is complete and boards were fabricated, this should be considered a learning exercise rather than a production-ready design. Firmware development was not released as part of the project.
 
 ## Key Features
 
