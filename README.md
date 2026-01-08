@@ -15,7 +15,7 @@ A 7-cell lithium-ion battery management system designed as a student project for
 
 This BMS was designed for an electric-assist recumbent tricycle with a focus on battery monitoring, safety, and data logging. The design used the ChibiOS operating system, and includes CAN bus communication, microSD data logging, and comprehensive fault detection.
 
-**This is a learning project from 2015 presented for portfolio and educational purposes. While the hardware was manufactured and tested, this is not a production-ready design.**
+⚠️ **Educational Prototype** - This was a student learning project from 2014 focused on PCB layout techniques for power electronics. While the design is complete and boards were fabricated, this should be considered a learning exercise rather than a production-ready design. Firmware development was not released as part of the project.
 
 ## Key Features
 
@@ -27,18 +27,6 @@ This BMS was designed for an electric-assist recumbent tricycle with a focus on 
 - **Power Management** - LT3990 buck-boost converter for auxiliary power
 - **Debug Interface** - JTAG programming and debugging support
 - **User Feedback** - RGB status LED, two buttons for user input
-
-## Hardware Versions
-
-### Version 1 (v01) - Manufactured & Tested
-Version 1 was designed in February 2015, manufactured in March 2015, and tested as part of the course project. Complete gerber files, BOM, and test documentation are included.
-
-- **Status**: Manufactured, assembled, and tested
-- **Manufacturing Files**: Complete gerbers available in `hardware/bms-v01/gerbers/`
-- **Documentation**: Full schematic, layout, BOM, and test results included
-
-### Version 2 (v02) - Design Iteration
-Version 2 was a design iteration that incorporated lessons learned from v01 testing, including corrections to the 8MHz crystal package and expanded AUX power traces. This version was never manufactured and the design files remain in the Eagle source directory.
 
 ## Technical Specifications
 
@@ -52,6 +40,32 @@ Version 2 was a design iteration that incorporated lessons learned from v01 test
 - **PCB**: 4-layer board, approximately 100mm x 75mm
 
 See [docs/specifications.md](docs/specifications.md) for complete specifications.
+
+## Systems Engineering Process
+
+This project followed a rigorous systems engineering methodology as taught in EMEN 5830:
+
+1. **Requirements Development** - Stakeholder needs analysis, system requirements derivation
+2. **Concept of Operations** - Use cases, operational scenarios, system interactions
+3. **Functional Analysis** - 21 iterations of Functional Flow Block Diagrams (FFDB)
+4. **Trade Studies** - Component selection based on cost, performance, availability
+5. **Design** - Schematic capture, PCB layout, mechanical integration
+6. **Testing** - Comprehensive test procedures and validation
+
+The [analysis/](analysis/) directory contains the complete systems engineering documentation, including all 21 FFDB iterations showing the evolution of the design through failure mode analysis.
+
+
+## Hardware Versions
+
+### Version 1 (v01) - Manufactured & Tested
+Version 1 was designed in February 2015, manufactured in March 2015, and tested as part of the course project. Complete gerber files, BOM, and test documentation are included.
+
+- **Status**: Manufactured, assembled, and tested
+- **Manufacturing Files**: Complete gerbers available in `hardware/bms-v01/gerbers/`
+- **Documentation**: Full schematic, layout, BOM, and test results included
+
+### Version 2 (v02) - Design Iteration
+Version 2 was a design iteration that incorporated lessons learned from v01 testing, including corrections to the 8MHz crystal package and expanded AUX power traces. This version was never manufactured and the design files remain in the Eagle source directory.
 
 ## Repository Structure
 
@@ -74,19 +88,6 @@ chibi-ecen-bms/
 ├── media/                # Photos, renders, and presentation
 └── testing/              # Test procedures and results
 ```
-
-## Systems Engineering Process
-
-This project followed a rigorous systems engineering methodology as taught in EMEN 5830:
-
-1. **Requirements Development** - Stakeholder needs analysis, system requirements derivation
-2. **Concept of Operations** - Use cases, operational scenarios, system interactions
-3. **Functional Analysis** - 21 iterations of Functional Flow Block Diagrams (FFDB)
-4. **Trade Studies** - Component selection based on cost, performance, availability
-5. **Design** - Schematic capture, PCB layout, mechanical integration
-6. **Testing** - Comprehensive test procedures and validation
-
-The [analysis/](analysis/) directory contains the complete systems engineering documentation, including all 21 FFDB iterations showing the evolution of the design through failure mode analysis.
 
 ## Getting Started
 
@@ -125,11 +126,12 @@ This project is released under the MIT License. See [LICENSE](LICENSE) for detai
 
 Copyright (c) 2015 Jone Lay
 
+You are free to use, modify, and distribute this design for any purpose, with attribution.
+
 ## Open Source Hardware
 
-This project is open source hardware. The design files, manufacturing files, and documentation are freely available for educational and non-commercial use. This project follows open source hardware best practices for documentation and file organization.
+This project is open source hardware. The design files, manufacturing files, and documentation are freely available for educational and non-commercial use.
 
 ## Disclaimer
 
-This is a student learning project from 2015. While care was taken in the design and the hardware was successfully manufactured and tested, this is not a production-ready design. Use at your own risk. Battery management systems must be designed with extreme care for safety - this design is presented for educational purposes only.
-
+*This project is shared for educational purposes and as a portfolio piece. It was a graduate student project from 2015. While care was taken in the design and the hardware was successfully manufactured and tested, this is not a production-ready design. Use at your own risk. Battery management systems must be designed with extreme care for safety - this design is presented for educational purposes only.
