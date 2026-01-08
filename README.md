@@ -2,6 +2,12 @@
 
 A 7-cell lithium-ion battery management system designed as a student project for EMEN 5830 (Fundamentals of Systems Engineering) at the University of Colorado Boulder in 2015.
 
+<p align="center">
+  <img src="media/photos/cbibi-ecen-bms-front-transparent.png" alt="BMS PCB - Front" height="400">
+  &nbsp;&nbsp;&nbsp;
+  <img src="media/photos/cbibi-ecen-bms-back-transparent.png" alt="BMS PCB - Back" height="400">
+</p>
+
 ## Overview
 
 This BMS was designed for an electric-assist recumbent tricycle with a focus on battery monitoring, safety, and data logging. The design used the ChibiOS operating system, and includes CAN bus communication, microSD data logging, and comprehensive fault detection.
