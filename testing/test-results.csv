@@ -1,0 +1,38 @@
+BMS v0.1 PCB Testing,,,,,,,,,,,
+ID,Group,Subgroup,Requirement Name,Requirement Description,ID,Measurement,Nominal Value,Results,Microcontroller?,Tolerance,Test Condition
+0.01,Sensor,Temperature,PCB TEMP 1 nominal,High temperature PCB thermistor calibration,0.01,Thermistor voltage drop,0.3,0.311V,0,?,"Ambient temperature = 25C, 3V3 rail = 3.3V"
+0.02,Sensor,Temperature,PCB TEMP 1 low,Low temperature PCB thermistor calibration,0.02,Thermistor voltage drop,1.65V,,0,?,"Ambient temperature = 25C, 3V3 rail = 3.3V"
+0.03,Sensor,Temperature,LTC6803 VTEMP1,High temperature VTEMP1 thermistor calibration,0.03,Thermistor voltage drop,1.65V,,0,?,"Ambient temperature = 25C, 3V3 rail = 3.3V"
+0.04,Sensor,Temperature,LTC6803 VTEMP1,Low temperature VTEMP1 thermistor calibration,0.04,Thermistor voltage drop,1.65V,,0,?,"Ambient temperature = 25C, 3V3 rail = 3.3V"
+0.05,Sensor,Temperature,LTC6803 VTEMP2,High temperature VTEMP2 thermistor calibration,0.05,Thermistor voltage drop,1.65V,,0,?,"Ambient temperature = 25C, 3V3 rail = 3.3V"
+0.06,Sensor,Temperature,LTC6803 VTEMP2,Low temperature VTEMP2 thermistor calibration,0.06,Thermistor voltage drop,1.65V,,0,?,"Ambient temperature = 25C, 3V3 rail = 3.3V"
+0.07,Sensor,Power Input,VBATT_SENSE,Accuracy of the Vbatt sense voltage divider,0.07,Voltage on Vbatt_sense,input_volt = 0.04*v_batt,"~1.43 @ 37V, verified OK",0,+- 2%,"V_batt > 30V, <55V"
+0.08,Sensor,Power Input,chrg_sense,Accuracy of the Charge sense voltage divider,0.08,Voltage on CHRG_SENSE,input_volt = 0.04*V_charger,"~1.5 @ 37.02V, verified OK",0,+- 2%,"V_charger > 30V, <55V"
+0.09,Sensor,Load current,load_aout,Accuracy of the load current amplifier,0.09,Voltage on LOAD_CURRENT,?,V2.579 output at load = 1.825A,0,?,"I_load > 0, V_batt >30V"
+0.1,Sensor,Charger current,CHRG_AOUT,Accuracy of the charge current amplifier,0.1,Voltage on CHRG_CURRENT,?,,0,?,"I_charger > 0, V_batt >30V"
+0.11,Sensor,Load fault,LOAD_FLT,Load over-current fault,0.11,Voltage on load MOSFET gate,0V,~=V_supply,0,-,I_load > cut-off threshold
+0.12,Sensor,Charger fault,CHRG_FLT,Charger over-current fault,0.12,Voltage on charger MOSFET gate,0V,,0,-,I_charger > cut-off threshold
+0.13,Sensor,Protection,chrg_sense over-voltage,The dual-diode device should protect the STM32 from over-voltage on chrg_sense,0.13,Voltage on chrg_sense,< 4V,,,?,">4V injected on this net, <10mA"
+0.14,Sensor,Protection,vbatt_sense over-voltage,The dual-diode device should protect the STM32 from over-voltage on vbatt_sense,0.14,Voltage on vbatt_sense,< 4V,,,?,">4V injected on this net, <10mA"
+0.15,Sensor,Protection,spi1 signals over-voltage,The dual-diode device should protect the STM32 from over-voltage on spi1 signals,0.15,"Voltage on spi1 nets (CS, MISO, MOSI, SCK)",< 4V,,,?,">4V injected on this net, <10mA"
+1.01,Power,Global,quiescent_current,Total PCB quiescent current,1.01,"Current from V_batt, current per cell",<1.2mA,"11mA (PCB 4), constant with variable voltage, constant when 3V3 is off",1,?,Low power mode
+1.02,Power,Battery,Reverse battery protection,P-channel MOSFET reverse battery protection,1.02,Voltage on VBATT net,0V,Tests good,0,+- 0.1V,V_batt_raw = -60V
+1.03,Power,Charger,Reverse charger protection,P-channel MOSFET reverse charger protection,1.03,Voltage on VBATT net,0V,"FAIL, perhaps the LT1990 provides an alternate path?",0,+- 0.1V,V_CHARGER= -60V
+1.04,Power,LT3990,LT3990 UVLO,LT3990 3V3 buck converter under-voltage lockout,1.04,"Voltages on +3V3, LT3990 PG pin","0V, 0V","Turn on @ 31V, turn off @ 28.8V",0,+- 0.5V,V_batt < 31V
+1.05,Power,5V charge pump,5V regulation accuracy,Voltage accuracy of 5V power rail,1.05,"V_peak, V_rms on +5V net","<0.1V, 5V","tested, pics",0,-,"5V_SHDN = 3.3V, +3V3 = 3.3V, I_5V = 0A, = 40mA"
+1.06,Power,LTC6803,LTC6803 VREG,Internal ASIC power regulation of the LTC6803,1.06,Voltage on Vreg net (LTC6803 pin 35),5V,,?,+- 0.5V,V_batt > 31V
+1.07,Power,Power,Balancing current,Balance current through the 10ohm power resistor,1.07,Voltage drop across power resistor,0.4725A,,1,+- 10%,V_cell ~ 4.3V
+2.01,Control,Load shutdown,Load shutdown,Load shutdown control,2.01,Conduction between Vbatt_sense and LOAD,0A,,0,-,"Vbatt_sns > 30V, load_shdn = 0V"
+2.02,Control,Charger control,Charger shutdown,Charger shutdown control,2.02,"Conduction between V_charger, Vbatt_sense",0A,,0,-,"V_charger > 30V, chrg_shdn = 0V"
+2.03,Control,Aux power enable,aux_enable,Auxiliary power output control,2.03,"Conduction between Vbatt_sense, AUX_OUT",0A,tested,0,-,"V_charger > 30V, chrg_shdn = 0V"
+2.04,Control,CANbus,CANbus shutdown,CANbus interface shutdown control,2.04,Voltage on ADM3054 VDD2 pin,5V,,?,?,Microcontroller is operational
+2.05,Logic,LTC6803,Watchdog timer,"Watchdog timer shutdown of charge, load, and 5V",2.05,"Conduction from Vbatt, CHARGE, LOAD, AUX",0A,,1,-,"Vbatt_sns > 30V, WDTB active"
+2.06,Logic,STM32,USB DFU enumeration,The STM32 enumerates as a DFU device with a Linux host,2.06,Host computer DMESG terminal output,Device file (/dev/ttyACM0),Verified,1,-,"Microcontroller is operational, BOOT = 3.3V"
+2.07,Logic,STM32,jtag_id,The STM32 communicates its device ID over JTAG,2.07,Microcontroller device ID,!0x0000 or !0xFFFF,Verified,1,-,Microcontroller is operational
+2.08,Logic,STM32,swd_id,The STM32 communicates its device ID over SWD,2.08,Microcontroller device ID,!0x0000 or !0xFFFF,Verified,1,-,Microcontroller is operational
+2.09,Logic,STM32,stm32_reset,The STM32 resets when the momentary button is pressed,2.09,Microcontroller operational state,Reset,Verified,1,-,"Microcontroller is operational, RESET = 0V"
+2.1,Logic,STM32,Read Button 1,The STM32 can read the state of button 1,2.1,Button 1 state,logical state = physical state,,1,-,"Microcontroller is operational, button 1 is pressed"
+2.11,Logic,STM32,Read Button 2,The STM32 can read the state of button 2,2.11,Button 2 state,logical state = physical state,,1,-,"Microcontroller is operational, button 2 is pressed"
+2.12,Logic,STM32,RGB LED output,"The STM32 can control the R,G,B LED color channels",2.12,"R,G,B LED states",LED color = logical control,,1,-,Microcontroller is operational
+2.13,Logic,STM32,8Mhz crystal accuracy,The frequency accuracy of the 8Mhz crystal,2.13,Frequency of waveform on OSC_IN,8Mhz or 16Mhz,,1,+-20ppm,"Microcontroller is operational, external oscillator enabled"
+2.14,Logic,STM32,32.768Khz crystal accuracy,The frequency accuracy of the 32.768Khz crystal,2.14,Frequency of waveform on OSC32_IN,32.768Khz,,1,+-20ppm,"Microcontroller is operational, low speed oscillator enabled"
