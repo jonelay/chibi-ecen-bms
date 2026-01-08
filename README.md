@@ -2,6 +2,9 @@
 
 A 7-cell lithium-ion battery management system designed as a student project for EMEN 5830 (Fundamentals of Systems Engineering) at the University of Colorado Boulder in 2015.
 
+![Board Status](https://img.shields.io/badge/status-prototype-yellow)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 <p align="center">
   <img src="media/photos/cbibi-ecen-bms-front-transparent.png" alt="BMS PCB - Front" height="400">
   &nbsp;&nbsp;&nbsp;
